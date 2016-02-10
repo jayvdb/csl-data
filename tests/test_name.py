@@ -1,8 +1,13 @@
+import sys
 import unittest
 
 from csl_data.schema import _NAME_SCHEMA, _LOOSE_NAME_SCHEMA
 from csl_data.item import CslDataItem, LooseCslDataItem
 from csl_data._fragments import Name
+
+from tests.utils import expected_failure_if
+
+PY2 = sys.version_info[0] == 2
 
 
 class NameTest(unittest.TestCase):
@@ -32,7 +37,7 @@ class NameTest(unittest.TestCase):
         assert author_0['given'].value == 'Oakley'
         assert author_0.value == {'family': 'Ray', 'given': 'Oakley'}
 
-    @unittest.expectedFailure
+    @expected_failure_if(PY2)
     def test_del(self):
         item = self.cls(self._item_base_data)
         item['author'] = [{}]
