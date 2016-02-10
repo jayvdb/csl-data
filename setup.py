@@ -23,7 +23,7 @@ if not PY2:
 
 setup(
     name=name,
-    version='0.1.0',
+    version='0.1.1',
     description='CSL data structure.',
     keywords='csl json schema publication article journal',
     author='John Vandenberg',
